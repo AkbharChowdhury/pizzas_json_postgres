@@ -40,14 +40,14 @@ VALUES('pizzas', '{
 
 -- check if cost is greater than
 
-select (details->'cost')::float  price
+select details->>'type' name,  (details->'cost')::float  price
 from items 
 WHERE 
  category = 'pizzas' 
 
  AND
 
- details @? '$.cost ? (@ > 6)';
+ details @? '$.cost ? (@ > 7)';
 		
 		
 		
