@@ -39,16 +39,15 @@ VALUES('pizzas', '{
 		
 
 -- check if cost is greater than
-
-select details->>'type' name,  (details->'cost')::float  price
+set lc_monetary to "en_GB";
+SELECT details->>'type' name,  
+(details->'cost')::text::money price,
+ details->>'description' content  
 from items 
 WHERE 
  category = 'pizzas' 
-
  AND
-
  details @? '$.cost ? (@ > 7)';
-		
 		
 		
       
